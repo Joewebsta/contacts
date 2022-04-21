@@ -1,0 +1,11 @@
+<h1>CONTACTS APP</h1>
+
+<% @contacts.each do |contact|%>
+  <ul>
+    <li><p><%= contact[:name] %></p></li>
+    <li><p><%= contact[:phone_number] %></p></li>
+    <li><p><%= contact[:email_address] %></p></li>
+  </ul>
+<% end %>
+
+
