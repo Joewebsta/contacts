@@ -16,14 +16,14 @@ end
 before do
   # session[:contacts] ||= []
 
-  session[:contacts] = [
-    { name: 'Joe',
-      phone_number: '555-555-5555',
-      email_address: 'joe@email.com' },
-    { name: 'Scott',
-      phone_number: '555-555-5555',
-      email_address: 'joe@email.com' }
-  ]
+  # session[:contacts] = [
+  # { name: 'Joe',
+  #   phone_number: '555-555-5555',
+  #   email_address: 'joe@email.com' },
+  # { name: 'Scott',
+  #   phone_number: '555-555-5555',
+  #   email_address: 'joe@email.com' }
+  # ]
 end
 
 helpers do
@@ -32,6 +32,20 @@ end
 
 # index page
 get '/' do
+  redirect '/contacts'
+end
+
+get '/contacts' do
   @contacts = session[:contacts]
   erb :index
+end
+
+get '/contacts/new' do
+  erb :new_contact
+end
+
+post '/contacts/new' do
+  name = params[:name]
+  session[:contacts] << { name: name }
+  redirect '/contacts'
 end
