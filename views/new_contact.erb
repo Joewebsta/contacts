@@ -1,9 +1,21 @@
+<% if @error_msg %>
+  <p><%= @error_msg %></p>
+<% end %>
+
 <h1>NEW CONTACT</h1>
 
-<form action="/contacts/new" method="post" class="new-contact">
+<form action="/contacts" method="post" class="new-contact">
   <div>
     <label for="name">Name:</label>
     <input type="text" name="name" id="name" value="">     
+  </div>
+  <div>
+    <label for="name">Email address:</label>
+    <input type="email" name="email" id="email" value="">     
+  </div>
+  <div>
+    <label for="name">Phone:</label>
+    <input type="tel" name="tel" id="tel" value="">     
   </div>
   <div>
     <input type="submit" value="Create Contact">
@@ -13,18 +25,3 @@
 <!--
 <input type="" name="" value="">
 </form>
-
-
-<form action="" method="get" class="form-example">
-  <div class="form-example">
-    <label for="name">Enter your name: </label>
-    <input type="text" name="name" id="name" required>
-  </div>
-  <div class="form-example">
-    <label for="email">Enter your email: </label>
-    <input type="email" name="email" id="email" required>
-  </div>
-  <div class="form-example">
-    <input type="submit" value="Subscribe!">
-  </div>
-  -->

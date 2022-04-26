@@ -1,0 +1,41 @@
+<style>
+
+header {
+  padding: 10px;
+  border-bottom: 1px solid #EAEDF2;
+}
+
+
+.contact {
+  margin-top: 20px;
+}
+
+.success {
+  color: #0f5132;
+  background: #d1e7dd;
+  border: 1px solid #badbcc;
+  padding: 10px;
+}
+
+</style>
+
+<header>
+  <h1>CONTACTS APP</h1>
+</header>
+
+<% if session[:success]%>
+  <p class="success"><%= session.delete(:success) %></p>
+<% end %>
+
+<ul>
+  <% @contacts.each do |contact|%>
+    <div class="contact">  
+      <li><p><%= contact[:name] %></p></li>
+      <li><p><%= contact[:email] %></p></li>
+      <li><p><%= contact[:tel] %></p></li>
+    </div>
+  <% end %>
+</ul>
+
+<a href="/contacts/new">New Contact</a>
+

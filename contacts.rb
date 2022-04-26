@@ -14,20 +14,7 @@ configure(:development) do
 end
 
 before do
-  # session[:contacts] ||= []
-
-  # session[:contacts] = [
-  # { name: 'Joe',
-  #   phone_number: '555-555-5555',
-  #   email_address: 'joe@email.com' },
-  # { name: 'Scott',
-  #   phone_number: '555-555-5555',
-  #   email_address: 'joe@email.com' }
-  # ]
-end
-
-helpers do
-  # add your helpers here
+  session[:contacts] ||= []
 end
 
 # index page
@@ -37,15 +24,44 @@ end
 
 get '/contacts' do
   @contacts = session[:contacts]
-  erb :index
+  erb :contact
 end
 
 get '/contacts/new' do
   erb :new_contact
 end
 
-post '/contacts/new' do
+post '/contacts' do
   name = params[:name]
-  session[:contacts] << { name: name }
+  email = params[:email]
+  tel = params[:tel]
+  @error_msg = 'You must provide a name.'
+
+  # if true
+  #   redirect '/contacts'
+  # else
+  session[:contacts] << { name: name, email: email, tel: tel }
+  session[:success] = 'Contact added!'
   redirect '/contacts'
+  # end
 end
+
+helpers do
+  # add your helpers here
+end
+# if error
+# Display banner with appropriate message
+# Redirect to 'contacts/new'
+# Populate info that had previously been provided
+# Else
+# Add new contact hash to session
+#
+
+# name validation
+# Empty strings
+# String must be greater than 0 chars and less than 100 chars
+# remove spaces before and after
+# email validation
+# Must conform to standard email regex
+# telephone validation
+#
