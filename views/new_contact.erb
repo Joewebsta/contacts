@@ -1,5 +1,8 @@
-<% if @error_msg %>
-  <p><%= @error_msg %></p>
+<% if session[:errors] %>
+  <% session[:errors].each do |msg| %>
+    <p><%= msg %></p>
+  <% end %>
+  <% session.delete(:errors) %>
 <% end %>
 
 <h1>NEW CONTACT</h1>
@@ -20,8 +23,4 @@
   <div>
     <input type="submit" value="Create Contact">
   </div>
-</form>
-
-<!--
-<input type="" name="" value="">
 </form>

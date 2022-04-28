@@ -32,18 +32,31 @@ get '/contacts/new' do
 end
 
 post '/contacts' do
-  name = params[:name]
+  name = params[:name].strip
   email = params[:email]
   tel = params[:tel]
-  @error_msg = 'You must provide a name.'
 
-  # if true
-  #   redirect '/contacts'
-  # else
-  session[:contacts] << { name: name, email: email, tel: tel }
-  session[:success] = 'Contact added!'
-  redirect '/contacts'
-  # end
+  errors = validate(name, email, tel)
+
+  if errors.empty?
+    session[:contacts] << { name: name, email: email, tel: tel }
+    session[:success] = 'Contact added!'
+    redirect '/contacts'
+  else
+    session[:errors] = errors
+    erb :new_contact
+  end
+end
+
+def validate(name, email, tel)
+  error_msgs = []
+  tel_pattern = /[0-9]{3}-?[0-9]{3}-?[0-9]{4}/
+
+  error_msgs << 'You must provide a name.' unless name.size.positive?
+  error_msgs << 'You must provide a valid email address.' unless email =~ /^.+@.+$/
+  error_msgs << 'You must provide a valid telephone number.' unless tel =~ tel_pattern
+
+  error_msgs
 end
 
 helpers do
