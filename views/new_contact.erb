@@ -10,15 +10,15 @@
 <form action="/contacts" method="post" class="new-contact">
   <div>
     <label for="name">Name:</label>
-    <input type="text" name="name" id="name" value="">     
+    <input type="text" name="name" id="name" value="<%= params[:name] %>">     
   </div>
   <div>
     <label for="name">Email address:</label>
-    <input type="email" name="email" id="email" value="">     
+    <input type="email" name="email" id="email" novalidate value="<%= params[:email] %>">     
   </div>
   <div>
     <label for="name">Phone:</label>
-    <input type="tel" name="tel" id="tel" value="">     
+    <input type="tel" name="tel" id="tel" value="<%= params[:tel] %>">     
   </div>
   <div>
     <input type="submit" value="Create Contact">

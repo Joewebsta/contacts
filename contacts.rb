@@ -50,11 +50,11 @@ end
 
 def validate(name, email, tel)
   error_msgs = []
-  tel_pattern = /[0-9]{3}-?[0-9]{3}-?[0-9]{4}/
+  tel_pattern = /[0-9]{3}-[0-9]{3}-[0-9]{4}/
 
   error_msgs << 'You must provide a name.' unless name.size.positive?
   error_msgs << 'You must provide a valid email address.' unless email =~ /^.+@.+$/
-  error_msgs << 'You must provide a valid telephone number.' unless tel =~ tel_pattern
+  error_msgs << 'You must provide a valid telephone number (xxx-xxx-xxxx).' unless tel =~ tel_pattern
 
   error_msgs
 end
