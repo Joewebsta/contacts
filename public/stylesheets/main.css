@@ -1,3 +1,28 @@
-/*
-  CSS goes here...
-*/
+.header {
+  padding: 10px;
+  border-bottom: 2px solid #EAEDF2;
+}
+
+main {
+  padding-left: 10px;
+}
+
+.contacts-container {}
+
+.contact {
+  padding: 20px 0;
+  border-bottom: 2px solid #EAEDF2;
+}
+
+.new-contact {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+
+.success {
+  color: #0f5132;
+  background: #d1e7dd;
+  border: 1px solid #badbcc;
+  padding: 10px;
+}

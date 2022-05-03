@@ -62,19 +62,3 @@ end
 helpers do
   # add your helpers here
 end
-# if error
-# Display banner with appropriate message
-# Redirect to 'contacts/new'
-# Populate info that had previously been provided
-# Else
-# Add new contact hash to session
-#
-
-# name validation
-# Empty strings
-# String must be greater than 0 chars and less than 100 chars
-# remove spaces before and after
-# email validation
-# Must conform to standard email regex
-# telephone validation
-#
